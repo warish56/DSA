@@ -49,6 +49,7 @@
 
 ### Code
 
+// this is General bellman ford algorithm
 ```java
 class Solution {
     public int findCheapestPrice(int n, int[][] flights, int src, int dst, int k) {
@@ -77,6 +78,48 @@ class Solution {
         return prices[dst] == Integer.MAX_VALUE ? -1 : prices[dst];
     }
 }
+```
+
+// This solution is for K stops problem
+
+```
+public int findCheapestPrice(int n, int[][] flights, int src, int dst, int k) {
+
+        int dist[] = new int[n];
+        for(int i=0; i<n; i++){
+            dist[i] = Integer.MAX_VALUE;
+        }
+
+        dist[src] = 0;
+
+      /**
+         1. since there are k stops which mean k+1 edges , so we are looping from 0->k
+         2. here we have to take a clone of the array from the previous round and then update that cloned arrey in the current round
+       */
+        for(int i=0; i<=k; i++){
+            int temp[] = dist.clone();
+            for(int flight[]: flights){
+                int currSrc = flight[0];
+                int currDest = flight[1];
+                int currCost = flight[2];
+
+                if(dist[currSrc] == Integer.MAX_VALUE){
+                    continue;
+                }
+
+                if(
+                   dist[currSrc] +  currCost < dist[currDest]
+                ){
+                    temp[currDest] = dist[currSrc] +  currCost; // juts use the cloned array to update the value
+                }
+            }
+            dist = temp;
+        }
+
+        return dist[dst] == Integer.MAX_VALUE ? -1 : dist[dst];
+        
+    }
+
 ```
 
 ### Explanation

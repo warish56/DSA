@@ -51,10 +51,10 @@ class Solution {
         int before = preq[1];
 
         ArrayList<Integer> temp = adjList.getOrDefault(curr, new ArrayList<Integer>());
-        temp.add(before);
+        temp.add(curr);
 
-        inDegMap[before]++;
-        adjList.put(curr, temp);
+        inDegMap[curr]++;
+        adjList.put(before, temp);
 
      }
 

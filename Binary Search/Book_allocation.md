@@ -8,6 +8,7 @@
 ## Similar Problems
 - [Youtube - Painters partition](https://www.youtube.com/watch?v=thUd_WJn6wk&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=20)
 - [ Youtube - Split array largest sum](https://www.youtube.com/watch?v=thUd_WJn6wk&list=PLgUwDviBIf0pMFMWuuvDNMAkoQFi-h0ZF&index=20)
+-[Capacity To Ship Packages Within D Days](https://leetcode.com/problems/capacity-to-ship-packages-within-d-days/submissions/1872013014/)
 
 
 ## What is the problem asking?
@@ -53,7 +54,7 @@ class Solution {
     public int findPages(int[] pages, int k) {
        
      int max = Integer.MIN_VALUE, sum=0;
-     for(int num: nums){
+     for(int num: pages){
         sum += num;
         max = Math.max(max, num);
      }
@@ -62,7 +63,7 @@ class Solution {
 
      while(start <= end){
         int mid = (start+end)/2;
-        int splits = maxSplits(nums, mid);
+        int splits = maxSplits(pages, mid);
 
         // System.out.println("For "+mid+" pages -> "+splits);
 
