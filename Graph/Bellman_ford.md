@@ -108,7 +108,7 @@ public int findCheapestPrice(int n, int[][] flights, int src, int dst, int k) {
                 }
 
                 if(
-                   dist[currSrc] +  currCost < dist[currDest]
+                   dist[currSrc] +  currCost < temp[currDest] //  juts use the cloned array to check the current value
                 ){
                     temp[currDest] = dist[currSrc] +  currCost; // juts use the cloned array to update the value
                 }
